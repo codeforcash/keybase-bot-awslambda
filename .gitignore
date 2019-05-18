@@ -1,0 +1,11 @@
+.bash_history
+.bash_logout
+.bash_profile
+.bashrc
+KeybaseBot.zip
+.ssh/*
+.cache/*
+.ssh/authorized_keys
+.viminfo
+.wget-hsts
+.local
