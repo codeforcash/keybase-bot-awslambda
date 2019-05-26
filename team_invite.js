@@ -15,11 +15,18 @@ var runBot = function(emailAddress, teamname) {
 		  .then(() => {
 		    console.log(`Your bot is initialized. It is logged in as ${bot.myInfo().username}`)
 
-			await bot.team.addMembers({
+			bot.team.addMembers({
 				team: teamname,
 				emails: [{email: emailAddress, role: 'writer'}],
-			})
-			resolve(true);
+			}).then(res => {
+				bot.deinit();
+				resolve(true);
+
+			}).catch(error => {
+				console.error(error);
+				bot.deinit();
+				resolve(false);
+			});
 
 		  })
 		  .catch(error => {
