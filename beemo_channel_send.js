@@ -1,5 +1,5 @@
 
-	var runBot = function(keybase_channel, message) {
+var runBot = function(keybase_channel, message) {
 
 	return new Promise(function(resolve) {
 
