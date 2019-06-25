@@ -1,5 +1,5 @@
 
-var runBot = function(keybase_channel, message) {
+var runBot = function(keybase_channel, message, topic_name) {
 
 	return new Promise(function(resolve) {
 
@@ -22,7 +22,7 @@ var runBot = function(keybase_channel, message) {
 		    public: false,
 		    topicType: 'chat',
 		    membersType: 'team',
-		    topicName: 'general',
+		    topicName: (typeof topic_name !== 'undefined' && topic_name !== null ? topic_name : 'general'),
 		  }
 
 		    const keybase_message = {
@@ -56,8 +56,9 @@ exports.handler = async (event) => {
   	const requestBody = JSON.parse(event.body);
   	const keybase_channel = requestBody.channel;
 	const message = requestBody.message;
+	const topic_name = requestBody.topic_name;
 
-	var invokeBot = await runBot(keybase_channel, message);
+	var invokeBot = await runBot(keybase_channel, message, topic_name);
 	const response = {
 		statusCode: 200,
 		body: JSON.stringify(invokeBot),
