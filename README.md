@@ -38,3 +38,11 @@ The compiled keybase go client binary is just in gopath/bin - maybe worth noting
 
 To build, run `zip -r KeybaseBot.zip .` then upload to lambda and config the username + paperkey envvars within lambda`
 
+* Endpoints
+
+** beemo-channel-send parameters
+```
+keybase_channel: required
+message: required
+topic_name: optional (defaults to 'general')
+```
